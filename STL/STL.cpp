@@ -128,12 +128,12 @@ int main()
 	cout << "Добавьте индекс элемента:"; cin >> pos;
 	cout << "Добавьте  число элемента:"; cin >> value;
 
-	forward_list <int>::iterator new it = list.begin();
+	forward_list <int>::iterator newIt = list.begin();
 	for (int i = 0; i < pos - 1; ++i)
 	{
-		++new it;
+		++newIt;
 	}
-	it = list.insert_after(new it, value);
+	it = list.insert_after(newiIt, value);
 	cout << endl;
 	for (std::forward_list<int>::iterator it = list.begin(); it != list.end(); ++it)
 	{
