@@ -15,8 +15,8 @@ using std::endl;
 
 //#define STL_ARRAY
 //#define STL_VECTOR
-#define STL_LIST
-//#define STL_FORWARD_LIST
+//#define STL_LIST
+#define STL_FORWARD_LIST
 
 int main()
 {
@@ -118,8 +118,8 @@ int main()
 
 #ifdef STL_FORWARD_LIST
 
-	forward_list<int>list = { 11, 22,33,44,55,66 };
-	forward_list <int>::iterator it;
+	std::forward_list<int>list = { 11, 22,33,44,55,66 };
+	std::forward_list <int>::iterator it;
 	for (std::forward_list<int>::iterator it = list.begin(); it != list.end(); ++it)
 	{
 		cout << *it << tab;
@@ -128,12 +128,12 @@ int main()
 	cout << "Добавьте индекс элемента:"; cin >> pos;
 	cout << "Добавьте  число элемента:"; cin >> value;
 
-	forward_list <int>::iterator newIt = list.begin();
+	std::forward_list<int>::iterator newIt = list.begin();
 	for (int i = 0; i < pos - 1; ++i)
 	{
 		++newIt;
 	}
-	it = list.insert_after(newiIt, value);
+	it = list.insert_after(newIt, value);
 	cout << endl;
 	for (std::forward_list<int>::iterator it = list.begin(); it != list.end(); ++it)
 	{
