@@ -1,7 +1,11 @@
 ﻿// STL.cpp :
-#include <iostream>
+
 #include<array>
+#include <iostream>
 #include<vector>
+#include<list>
+#include<forward_list>
+
 using std::cout;
 using std::cin;
 using std::endl;
@@ -10,12 +14,16 @@ using std::endl;
 
 
 //#define STL_ARRAY
-#define STL_VECTOR
-//#define STL_DEGUE
+//#define STL_VECTOR
+#define STL_LIST
+//#define STL_FORWARD_LIST
 
 int main()
 {
 	setlocale(LC_ALL, "");
+
+	int pos = 0;
+	int value = 0;
 
 #ifdef STL_ARRAY
 	std::array<int, 5> arr = { 3,5,8,13,21 };
@@ -83,14 +91,56 @@ int main()
 	{
 		std::cerr << "Someething happend " << endl;
 	}
-
-
 #endif //STL_VECTOR
 
+#ifdef	STL_LIST
+	
+	std::list<int>mylist{ 1,2,3,4,5,6,7 };
+	std::list<int>::iterator it = mylist.begin();
 
-#ifdef	STL_DEGUE
+	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
+	{
+		cout << *it << tab;
+	}
+	cout << endl;
 
-#endif // STL_DEGUE
+	cout << "Добавьте индекс элемента:"; cin >> pos;
+	advance(it, pos);
+	cout << endl;
+	cout << "Добавьте  число элемента:"; cin >> value;
+	mylist.insert(it, value);
+	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
+	{
+		cout << *it << tab;
+	}
+
+#endif // STL_LIST
+
+#ifdef STL_FORWARD_LIST
+
+	forward_list<int>list = { 11, 22,33,44,55,66 };
+	forward_list <int>::iterator it;
+	for (std::forward_list<int>::iterator it = list.begin(); it != list.end(); ++it)
+	{
+		cout << *it << tab;
+	}
+	cout << endl;
+	cout << "Добавьте индекс элемента:"; cin >> pos;
+	cout << "Добавьте  число элемента:"; cin >> value;
+
+	forward_list <int>::iterator new it = list.begin();
+	for (int i = 0; i < pos - 1; ++i)
+	{
+		++new it;
+	}
+	it = list.insert_after(new it, value);
+	cout << endl;
+	for (std::forward_list<int>::iterator it = list.begin(); it != list.end(); ++it)
+	{
+		cout << *it << tab;
+	}
+#endif // STL_FORWARD_LIST
+
 
 
 }
